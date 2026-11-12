@@ -1,0 +1,31 @@
+.DS_Store
+node_modules/
+dist/
+release/
+coverage/
+*.log
+spikes/**/extension/mux.js
+
+# Local browser profiles, cookies, generated media and reports
+.test-data/
+playwright-report/
+test-results/
+spikes/**/evidence/
+spikes/**/extension/*.mp4
+spikes/**/extension/*.m4a
+
+# Local orchestration, captured pages and acceptance evidence
+docs/
+TASK.md
+read-task-context.py
+scripts/read-fixture-task-context.py
+scripts/extract-doc-sources.py
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx

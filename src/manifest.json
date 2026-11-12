@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Local Media Downloader",
+  "description": "Локальное сохранение доступных медиа без внешнего приложения.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "120",
+  "default_locale": "ru",
+  "permissions": ["storage", "downloads", "webRequest", "offscreen", "scripting", "activeTab", "alarms", "webNavigation"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "background": { "service_worker": "background/service-worker.js", "type": "module" },
+  "action": { "default_popup": "ui/popup/index.html", "default_title": "Local Media Downloader" },
+  "options_ui": { "page": "ui/options/index.html", "open_in_tab": true },
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'self'; worker-src 'self'" },
+  "incognito": "not_allowed"
+}

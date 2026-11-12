@@ -1,0 +1,909 @@
+{
+  "schemaVersion": 1,
+  "originRoles": "page/cdn заменяются значениями startFixtureServer().origins[0/1]; это не внешние hosts",
+  "inputManifest": ".test-data/fixtures-f/generated.json",
+  "mediaMetadata": "docs/evidence/t_ab1783c7/media-results.json",
+  "cases": [
+    {
+      "id": "F-AT-01",
+      "atIds": [
+        "AT-01"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "Два origin и страница для чистой actual-dist установки",
+      "acceptanceRemaining": "Оператор: Developer mode Load unpacked, CSP/popup actual dist Chrome"
+    },
+    {
+      "id": "F-AT-02",
+      "atIds": [
+        "AT-02"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "Тот же стенд без browser-specific медиа",
+      "acceptanceRemaining": "Оператор: actual-dist установка Brave, Shields/версия"
+    },
+    {
+      "id": "F-AT-03",
+      "atIds": [
+        "AT-03"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "Журнал каждого origin без query/cookies",
+      "acceptanceRemaining": "Оператор: настоящий host deny/grant и CDN/local mode"
+    },
+    {
+      "id": "F-AT-04",
+      "atIds": [
+        "AT-04"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/extensionless",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "7 direct-форматов, extensionless MIME и полные HTTP SHA",
+      "acceptanceRemaining": "I: обнаружение→скачивание обоих вариантов actual dist; SHA результата"
+    },
+    {
+      "id": "F-AT-05",
+      "atIds": [
+        "AT-05"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/source.webm",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ],
+        "sha256": "2bc2e29ab729e400701f81a000b7f74c39c80ad56e48f21a1787ffb6624cad30"
+      },
+      "faults": [],
+      "scope": "WebM/MKV/MP3/M4A/Ogg/WAV INPUT metadata/full decode",
+      "acceptanceRemaining": "I: все direct output hashes, исходный suffix/codec"
+    },
+    {
+      "id": "F-AT-06",
+      "atIds": [
+        "AT-06"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/master.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "94ee9f76576baf91f9accdb9f355aa31edd4de8ac89b82fec6659ddae4f082aa"
+      },
+      "faults": [],
+      "scope": "3 реальных разрешения 90/180/270, markers, 2 аудиоязыка/CDN",
+      "acceptanceRemaining": "I: один материал/3 variants, выбор не лучшего, output/seek"
+    },
+    {
+      "id": "F-AT-07",
+      "atIds": [
+        "AT-07"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/range.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "fd7ac5f503b14440bcad86a2a9f1ed4d9537ac3e7578d3c7094a485754742881"
+      },
+      "faults": [],
+      "scope": "fMP4/MAP/BYTERANGE + HTTP ranges с точными байтами",
+      "acceptanceRemaining": "I: actual-dist output seek/duration/init requests"
+    },
+    {
+      "id": "F-AT-08",
+      "atIds": [
+        "AT-08"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/master.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "94ee9f76576baf91f9accdb9f355aa31edd4de8ac89b82fec6659ddae4f082aa"
+      },
+      "faults": [],
+      "scope": "ru880Hz/en440Hz, flash/tone эталон split inputs",
+      "acceptanceRemaining": "I: output markers start/middle/end ≤100ms + плеер/язык/fallback"
+    },
+    {
+      "id": "F-AT-09",
+      "atIds": [
+        "AT-09"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/discontinuity.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "85088637bb569c61b0f831664c132f907ee5d8410107aef35e744f9f20c37f94"
+      },
+      "faults": [],
+      "scope": "discontinuity и смена 90→180p; реальные resolver планы",
+      "acceptanceRemaining": "I: все части/предупреждение/seek/воспроизведение"
+    },
+    {
+      "id": "F-AT-10",
+      "atIds": [
+        "AT-10"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/dash.mpd",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "dash",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "d0a95a88c90eb7bea613f4ec21dd798df3f88d9667bc595b73a531af11846ba4"
+      },
+      "faults": [],
+      "scope": "Template+Timeline и Template duration, отдельные AV",
+      "acceptanceRemaining": "I: actual-dist remux markers/seek/длительность"
+    },
+    {
+      "id": "F-AT-11",
+      "atIds": [
+        "AT-11"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/list.mpd",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "dash",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "980aa80d18a2481a710f7957cc18684b362d843a433b4e26c2c56eb5282629fb"
+      },
+      "faults": [],
+      "scope": "List ranges + BaseURL/SegmentBase настоящий sidx (/media/base.mpd)",
+      "acceptanceRemaining": "I: оба профиля actual-dist output/index/ranges"
+    },
+    {
+      "id": "F-AT-12",
+      "atIds": [
+        "AT-12"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/periods.mpd",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "dash",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "463607b53e28a17f8466fb4b10e92975d48914892d964d3b58c75d661e8389e8"
+      },
+      "faults": [],
+      "scope": "2 последовательных Period по6s; resolver не теряет второй",
+      "acceptanceRemaining": "I: total12s/обе части, config-change из E corpus"
+    },
+    {
+      "id": "F-AT-13",
+      "atIds": [
+        "AT-13"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/live/hls.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "durationSeconds": 906
+      },
+      "faults": [],
+      "scope": "906s непрерывные PTS/уникальные fragments/sliding/ENDLIST",
+      "acceptanceRemaining": "I длительный: ≥900s wall time + Stop, нет дублей, файл/seek"
+    },
+    {
+      "id": "F-AT-14",
+      "atIds": [
+        "AT-14"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/live/dash.mpd",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "dash",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "durationSeconds": 906
+      },
+      "faults": [],
+      "scope": "906s split AV timeline window/dynamic→static",
+      "acceptanceRemaining": "I длительный: ≥900s wall time + Stop, sync/seek/целостность"
+    },
+    {
+      "id": "F-AT-15",
+      "atIds": [
+        "AT-15"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/live-gap.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ]
+      },
+      "faults": [
+        "sliding-window",
+        "EXT-X-GAP",
+        "HTTP404"
+      ],
+      "scope": "Управляемый clock, EXT-X-GAP и реальный404 segment; /live/gap.m3u8 jump",
+      "acceptanceRemaining": "I: окно потеряно→видимый warning и воспроизводимый остаток"
+    },
+    {
+      "id": "F-AT-16",
+      "atIds": [
+        "AT-16"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/master.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "94ee9f76576baf91f9accdb9f355aa31edd4de8ac89b82fec6659ddae4f082aa"
+      },
+      "faults": [],
+      "scope": "segmented VTT expected.vtt + external.vtt/text.ttml/subtitles.mpd",
+      "acceptanceRemaining": "I: output sidecars/times/language; отказ subtitles не портит видео"
+    },
+    {
+      "id": "F-AT-17",
+      "atIds": [
+        "AT-17"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/encrypted.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "aef77854fbb65593ba58e24dc0000bea185fd0a9e44cb38111bc6e782f51c587"
+      },
+      "faults": [
+        "AES-128",
+        "SESSION-KEY",
+        "DRM"
+      ],
+      "scope": "AES128/SESSION-KEY/DRM HTTP manifests, запрет key request",
+      "acceptanceRemaining": "I: понятный отказ UI, нет ложного MP4/license/key fetch"
+    },
+    {
+      "id": "F-AT-18",
+      "atIds": [
+        "AT-18"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "Реальные browser input iframe+SPA в Chrome/Brave",
+      "acceptanceRemaining": "I: tab/frame/generation, поздние события, несколько материалов/вкладок"
+    },
+    {
+      "id": "F-AT-19",
+      "atIds": [
+        "AT-19"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/signed",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [
+        "expired",
+        "query-reencoding",
+        "redirect-authority",
+        "redirect-loop"
+      ],
+      "scope": "Подпись/expiry, encoded query, redirect/loop и запрет нового authority",
+      "acceptanceRemaining": "I: actual-browser opaque redirects fail closed/redetect; UI error"
+    },
+    {
+      "id": "F-AT-20",
+      "atIds": [
+        "AT-20"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/auth/page",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [
+        "HTTP401-without-session"
+      ],
+      "scope": "Chrome/Brave HttpOnly SameSite=Lax 401→200 + exact hash, no CORS bypass",
+      "acceptanceRemaining": "I/оператор: actual dist permissions/policies; это same-site, не cross-site guarantee"
+    },
+    {
+      "id": "F-AT-21",
+      "atIds": [
+        "AT-21"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/fault/stall",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [
+        "401",
+        "403",
+        "404",
+        "429",
+        "500",
+        "timeout",
+        "stall",
+        "disconnect",
+        "truncated"
+      ],
+      "scope": "HTTP401/403/404/429/500; Retry-After; timeout/stall/disconnect/truncated",
+      "acceptanceRemaining": "B: исправить unhandled NETWORK_TIMEOUT; I: retries/backoff/concurrency/UI offline"
+    },
+    {
+      "id": "F-AT-22",
+      "atIds": [
+        "AT-22"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/fault/ignore-range",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [
+        "ignore-range",
+        "wrong-range",
+        "etag-change",
+        "416"
+      ],
+      "scope": "200 вместо206, неверный диапазон/ETag-change/416/suffix range",
+      "acceptanceRemaining": "I: нет append corruption; hash результата/new attempt"
+    },
+    {
+      "id": "F-AT-23",
+      "atIds": [
+        "AT-23"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/source.mp4",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ],
+        "sha256": "311c4c19cdeb659ffecaf88febc05bc8fe25458fb3b87d4880b6458b0c0b4419"
+      },
+      "faults": [],
+      "scope": "Переиспользуется B harness, новый продуктовый код не нужен",
+      "acceptanceRemaining": "I: popup И manager закрыты; browser complete и snapshot"
+    },
+    {
+      "id": "F-AT-24",
+      "atIds": [
+        "AT-24"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/source.mp4",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ],
+        "sha256": "311c4c19cdeb659ffecaf88febc05bc8fe25458fb3b87d4880b6458b0c0b4419"
+      },
+      "faults": [],
+      "scope": "Переиспользуется ServiceWorker.stopAllWorkers в B harness",
+      "acceptanceRemaining": "I: закрытые DevTools/lease/downloadId, fetch/export обе стадии"
+    },
+    {
+      "id": "F-AT-25",
+      "atIds": [
+        "AT-25"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/source.mp4",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ],
+        "sha256": "311c4c19cdeb659ffecaf88febc05bc8fe25458fb3b87d4880b6458b0c0b4419"
+      },
+      "faults": [],
+      "scope": "Переиспользуется close/relaunch только project profile",
+      "acceptanceRemaining": "I: checkpoint/disk/session/settings, не вечный downloading"
+    },
+    {
+      "id": "F-AT-26",
+      "atIds": [
+        "AT-26"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/master.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "94ee9f76576baf91f9accdb9f355aa31edd4de8ac89b82fec6659ddae4f082aa"
+      },
+      "faults": [],
+      "scope": "Повторно не написано; reuse B/E lifecycle harness",
+      "acceptanceRemaining": "I: все supported paths/late epoch/cleanup/requestId; live no pause"
+    },
+    {
+      "id": "F-AT-27",
+      "atIds": [
+        "AT-27"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/master.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "94ee9f76576baf91f9accdb9f355aa31edd4de8ac89b82fec6659ddae4f082aa"
+      },
+      "faults": [
+        "unit-only-quota-injection"
+      ],
+      "scope": "Reuse tests/unit/engine/regressions.test.ts (mock handle quota) и реальные HTTP faults",
+      "acceptanceRemaining": "I: jobs1–4,segments1–8/global16; QUOTA/DISK ошибки изолированы, не HTTP fake; настоящая disk/quota приёмка не выполнена"
+    },
+    {
+      "id": "F-AT-28",
+      "atIds": [
+        "AT-28"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/live-source.mp4",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ],
+        "sha256": "9ec71f55c8d8cde96e0df7510cf2f9549c564cd4d21b1b0a21a8d093f58320e5"
+      },
+      "faults": [],
+      "scope": "Markers эталон 906s; новые гигабайтные файлы не дублированы",
+      "acceptanceRemaining": "I длительный: product direct+split AV256MiB/2GiB, полная RAM attribution/markers/плеер"
+    },
+    {
+      "id": "F-AT-29",
+      "atIds": [
+        "AT-29"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/source.mp4",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ],
+        "sha256": "311c4c19cdeb659ffecaf88febc05bc8fe25458fb3b87d4880b6458b0c0b4419"
+      },
+      "faults": [],
+      "scope": "Малый источник и SHA для операторского протокола",
+      "acceptanceRemaining": "Оператор: cancel/save/collision, не completed до реального commit"
+    },
+    {
+      "id": "F-AT-30",
+      "atIds": [
+        "AT-30"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/xxe.mpd",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "dash",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "d298316a1bcccd76f08e39e61fb27fc632be98c7e0eab98f754a07c6ffb2cfa8"
+      },
+      "faults": [
+        "XXE",
+        "private-URL",
+        "manifest-size",
+        "segment-count",
+        "depth",
+        "traversal"
+      ],
+      "scope": "XXE/private URL/manifest8MiB/100001segments/depth/redirect limits/traversal",
+      "acceptanceRemaining": "I: actual-dist XSS/имена/прокси/XXE; DNS rebinding не объявлять закрытым"
+    },
+    {
+      "id": "F-AT-31",
+      "atIds": [
+        "AT-31"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/signed",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "Безопасный HTTP журнал и synthetic token inputs",
+      "acceptanceRemaining": "I: preview/export/settings/история без токенов/Auth/cookies"
+    },
+    {
+      "id": "F-AT-32",
+      "atIds": [
+        "AT-32"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "Reuse B migration/session fixtures; новый dist не создаётся",
+      "acceptanceRemaining": "Оператор Reload stable ID + I schema migration/active interrupted"
+    },
+    {
+      "id": "F-AT-33",
+      "atIds": [
+        "AT-33"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/source.mp4",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ],
+        "sha256": "311c4c19cdeb659ffecaf88febc05bc8fe25458fb3b87d4880b6458b0c0b4419"
+      },
+      "faults": [],
+      "scope": "Reuse настоящие OPFS/IDB lifecycle tests",
+      "acceptanceRemaining": "I: success/cancel/crash/orphan TTL24h/paused preserve; user output остаётся"
+    },
+    {
+      "id": "F-AT-34",
+      "atIds": [
+        "AT-34"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/media/master.m3u8",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "hls",
+        "tracks": [
+          "выбранное video/audio; sidecar по выбору"
+        ],
+        "sha256": "94ee9f76576baf91f9accdb9f355aa31edd4de8ac89b82fec6659ddae4f082aa"
+      },
+      "faults": [],
+      "scope": "Реальные H264/AAC,VP9/Opus,AAC,MP3 входы",
+      "acceptanceRemaining": "I: UI и forged selections; AAC→MP3 reject, допустимые remux не suffix rename"
+    },
+    {
+      "id": "F-AT-35",
+      "atIds": [
+        "AT-35"
+      ],
+      "origins": [
+        "page",
+        "cdn"
+      ],
+      "entryPath": "/",
+      "generator": {
+        "command": "node scripts/fixtures-generate.mjs",
+        "version": "1"
+      },
+      "expected": {
+        "protocol": "direct",
+        "tracks": [
+          "исходные дорожки без изменения"
+        ]
+      },
+      "faults": [],
+      "scope": "Все local inputs доступны сравнительному аудиту, оригинал не установлен",
+      "acceptanceRemaining": "Оператор: отдельно разрешить официальный эталон; затем сравнительный I/сайты"
+    }
+  ]
+}
